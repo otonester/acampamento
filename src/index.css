@@ -1,0 +1,115 @@
+@import '@fontsource-variable/bricolage-grotesque/wght.css';
+@import '@fontsource-variable/hanken-grotesk/wght.css';
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Hanken Grotesk Variable', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque Variable', 'Hanken Grotesk Variable', system-ui, sans-serif;
+
+  --color-mata-900: #11301f;
+  --color-mata-800: #173f2c;
+  --color-mata-700: #1f5238;
+  --color-mata-600: #2b6b4a;
+  --color-musgo-300: #b6d0b8;
+  --color-musgo-200: #cfe0cf;
+  --color-musgo-100: #e3eee1;
+  --color-musgo-50: #f0f5ee;
+  --color-papel: #f8f9f6;
+  --color-tinta: #1b2420;
+  --color-pedra-600: #58625b;
+  --color-pedra-400: #8c958f;
+  --color-linha: #e2e6df;
+  --color-ambar: #975606;
+  --color-ambar-bg: #fbf1de;
+  --color-erro: #ad3327;
+  --color-erro-bg: #fae9e6;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--color-papel);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.4;
+  overscroll-behavior-y: none;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-mata-600);
+  outline-offset: 2px;
+}
+
+.scroll-x {
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.scroll-x::-webkit-scrollbar {
+  display: none;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Painéis: sobem da borda no celular, aparecem suavemente no computador. */
+@keyframes sheet-up {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.anim-sheet {
+  animation: sheet-up 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.anim-fade {
+  animation: fade-in 0.15s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+  @page {
+    margin: 14mm;
+  }
+}
